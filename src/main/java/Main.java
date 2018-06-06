@@ -1,15 +1,15 @@
 import configuration.Configuration;
-import excel.ExcelUtil;
 import parser.WordCounter;
-import textgathering.GetTextFromURL;
+import utils.ExcelUtil;
+import utils.FileUtils;
 
 import java.util.Map;
 
 public class Main {
 
    public static void main(String[] args) {
-      String pathToFile = System.getenv("ROOT_PROJECT_DIR")+ Configuration.getProperty("fileToWriteTextPath");
-      new GetTextFromURL().putUrlTextToFile(pathToFile);
+      String pathToFile = System.getProperty("user.dir") + Configuration.getTxtFilePath();
+      FileUtils.putUrlTextToFile(pathToFile);
       Map<String, Integer> words = WordCounter.countSimilarWords(pathToFile);
       ExcelUtil.writeResultsToExcelFile(words);
    }

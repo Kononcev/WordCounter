@@ -1,4 +1,4 @@
-package excel;
+package utils;
 
 import configuration.Configuration;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,7 +16,7 @@ public class ExcelUtil {
    private static int rowNum = 0;
 
    public static void writeResultsToExcelFile(Map<String, Integer> words) {
-      try (FileOutputStream out = new FileOutputStream(new File(System.getenv("ROOT_PROJECT_DIR")+Configuration.getProperty("excelFilePath")))) {
+      try (FileOutputStream out = new FileOutputStream(new File(System.getProperty("user.dir")+Configuration.getExcelFilePath()))) {
          workbook.createSheet();
          XSSFSheet sheet = workbook.getSheetAt(0);
 
