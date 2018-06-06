@@ -13,9 +13,9 @@ import java.util.regex.Matcher;
 public class WordCounter {
    private static String word = "";
 
-   public static Map<String, Integer> countSimilarWords(File file) {
+   public static Map<String, Integer> countSimilarWords(String pathToFile) {
       Map<String, Integer> wordsMap = new HashMap<>();
-      List<String> text = GetTextFromFile.getTextFromFile(file);
+      List<String> text = GetTextFromFile.getTextFromFile(pathToFile);
       text.forEach(line -> {
          Matcher matcher = Constants.ONLY_WORD_CHARACTERS.matcher(line);
          while (matcher.find()) {
